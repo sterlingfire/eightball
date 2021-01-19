@@ -1,21 +1,42 @@
 import { useState } from "react";
 import "./EightBall.css";
-/* EightBall component */
+
+/** EightBall component
+ * 
+ * Props:
+ * - answers: [{msg, color}, ...]
+ * 
+ * State:
+ * - color: current color of the eightball
+ * - msg: current message of the eightball
+ * 
+ * App -> EightBall
+ * */ 
 
 function EightBall({answers}) {
   const [color, setColor] = useState("black");
   const [msg, setMsg] = useState("Ask a question.");
   let EightBallStyle = {backgroundColor:color};
+
   return (
-    <div onClick={getAnswer} className="EightBall" style={EightBallStyle}>
-      <h2 className="EightBall-Title" >{msg}</h2>
+    <div>
+      <div onClick={getAnswer} className="EightBall" style={EightBallStyle}>
+        <h2 className="EightBall-Title" >{msg}</h2>
+      </div>
+      <button onClick={reset} className="EightBall-Reset">Reset the eightball!</button>
     </div>
   );
+  
   function getAnswer() {
     let ansIndex = Math.floor(Math.random()*answers.length);
     let nextAnswer = answers[ansIndex];
     setMsg(nextAnswer.msg);
     setColor(nextAnswer.color);
+  }
+
+  function reset() {
+    setMsg("Ask a question");
+    setColor("black");
   }
 }
 
