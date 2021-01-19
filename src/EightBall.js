@@ -9,6 +9,8 @@ import "./EightBall.css";
  * State:
  * - color: current color of the eightball
  * - msg: current message of the eightball
+ * - records: object holding the scores for the colors
+ *    ex: {red: 10, green: 2, goldenrod: 3}
  * 
  * App -> EightBall
  * */ 
