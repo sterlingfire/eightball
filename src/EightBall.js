@@ -24,9 +24,9 @@ function EightBall({answers}) {
   return (
     <div>
       <div onClick={getAnswer} className="EightBall" style={EightBallStyle}>
-        <h2 className="EightBall-Title" >{msg}</h2>
+        <h2 className="EightBall-title" >{msg}</h2>
       </div>
-      <button onClick={reset} className="EightBall-Reset">Reset the eightball!</button>
+      <button onClick={reset} className="EightBall-reset">Reset the eightball!</button>
       <div>
         <p>Score for green: {records.green}</p>
         <p>Score for red: {records.red}</p>
@@ -35,15 +35,20 @@ function EightBall({answers}) {
     </div>
   );
   
+  /** Description of functions  */
   function getAnswer() {
     let ansIndex = Math.floor(Math.random()*answers.length);
     let {msg, color} = answers[ansIndex];
-    records[color] += 1;
+    // records[color] += 1;
+    // Be more explicit that we're making something new out of the old
+    // [color]: Dynamic key generation
+    const newRecords = {...records, [color]:records[color] + 1};
     setMsg(msg);
     setColor(color);
-    setRecords(records);
+    setRecords(newRecords);
   }
 
+  /** Description of functions  */
   function reset() {
     setMsg("Ask a question");
     setColor("black");

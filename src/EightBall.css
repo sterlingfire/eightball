@@ -6,16 +6,17 @@
     vertical-align: middle;
     margin-top: 25%;
 }
-.EightBall-Title{
+.EightBall-title{
     color:whitesmoke;
     margin-top: 48%;
     padding: 0%;
     text-align: center;
 }
-.EightBall-Reset{
+.EightBall-reset{
     display: inline-block;
     background-color: gold;
-    height: 100px;
-    border-radius: 25%;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
     border: none;
 }
