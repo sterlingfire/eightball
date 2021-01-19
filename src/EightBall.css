@@ -1,0 +1,14 @@
+.EightBall{
+    border-radius: 50%;
+    display: inline-block;
+    width: 400px;
+    height: 400px;
+    vertical-align: middle;
+    margin-top: 25%;
+}
+.EightBall-Title{
+    color:whitesmoke;
+    margin-top: 50%;
+    padding: 0%;
+    text-align: center;
+}
