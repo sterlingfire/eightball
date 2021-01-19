@@ -16,6 +16,7 @@ import "./EightBall.css";
 function EightBall({answers}) {
   const [color, setColor] = useState("black");
   const [msg, setMsg] = useState("Ask a question.");
+  const [records, setRecords] = useState({green: 0, red: 0, goldenrod: 0});
   let EightBallStyle = {backgroundColor:color};
 
   return (
@@ -24,19 +25,27 @@ function EightBall({answers}) {
         <h2 className="EightBall-Title" >{msg}</h2>
       </div>
       <button onClick={reset} className="EightBall-Reset">Reset the eightball!</button>
+      <div>
+        <p>Score for green: {records.green}</p>
+        <p>Score for red: {records.red}</p>
+        <p>Score for goldenrod: {records.goldenrod}</p>
+      </div>
     </div>
   );
   
   function getAnswer() {
     let ansIndex = Math.floor(Math.random()*answers.length);
-    let nextAnswer = answers[ansIndex];
-    setMsg(nextAnswer.msg);
-    setColor(nextAnswer.color);
+    let {msg, color} = answers[ansIndex];
+    records[color] += 1;
+    setMsg(msg);
+    setColor(color);
+    setRecords(records);
   }
 
   function reset() {
     setMsg("Ask a question");
     setColor("black");
+    setRecords({green: 0, red: 0, goldenrod: 0});
   }
 }
 
